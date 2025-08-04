@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zoho Community PWA</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#3f51b5"/>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+  <style>
+    html, body, iframe {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <iframe src="https://communityspaces.zoho.eu/portal/discord-account-support-corporation/dashboard" frameborder="0"></iframe>
+</body>
+</html>
