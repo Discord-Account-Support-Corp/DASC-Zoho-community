@@ -4,24 +4,52 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Zoho Community PWA</title>
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#3f51b5"/>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js');
     }
+
+    function showFallback() {
+      document.getElementById('iframe-container').style.display = 'none';
+      document.getElementById('fallback').style.display = 'block';
+    }
   </script>
   <style>
-    html, body, iframe {
+    html, body {
       margin: 0;
       padding: 0;
       height: 100%;
       width: 100%;
+      font-family: Arial, sans-serif;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
       border: none;
+    }
+    #fallback {
+      display: none;
+      padding: 2rem;
+      text-align: center;
+    }
+    #fallback a {
+      color: #3f51b5;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <iframe src="https://communityspaces.zoho.eu/portal/discord-account-support-corporation/dashboard" frameborder="0"></iframe>
+  <div id="iframe-container">
+    <iframe src="https://communityspaces.zoho.eu/portal/discord-account-support-corporation/dashboard"
+            onerror="showFallback()"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
+    </iframe>
+  </div>
+  <div id="fallback">
+    <p>🚧 Unable to load the app inside this window.</p>
+    <p><a href="https://communityspaces.zoho.eu/portal/discord-account-support-corporation/dashboard" target="_blank">Click here to open in a new tab</a></p>
+  </div>
 </body>
 </html>
